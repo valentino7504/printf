@@ -16,6 +16,6 @@ int _putchar(char c);
 int _strlen(char *s);
 int printf_c(va_list ap);
 int printf_str(va_list ap);
-int printf_37(va_list ap);
+int printf_37();
 int _printf(const char *format, ...);
 #endif
