@@ -4,7 +4,7 @@
  * @ap: the variable list of arguments
  * Return: 1
  */
-int printf_37()
+int printf_37(void)
 {
 	char percent = '%';
 
