@@ -10,7 +10,7 @@
 typedef struct prints
 {
 	char *specifier;
-	int (*print_function)(va_list ap);
+	int (*print_function)();
 } print_t;
 int _putchar(char c);
 int _strlen(char *s);

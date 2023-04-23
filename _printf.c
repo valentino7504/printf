@@ -8,7 +8,7 @@ int _printf(const char *format, ...)
 {
 	int i = 0, j, length;
 	va_list ap;
-	print_t prints[] = {{"s", printf_str},
+	print_t prints[] = {{"s", printf_str}, {"%", printf_37},
 	{"c", printf_c}, {NULL, NULL}};
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 			}
 			if (prints[j].specifier == NULL)
 			{
-				printf_37();
+				_putchar(format[i]);
 				_putchar(format[i + 1]);
 				length += 2;
 			}
