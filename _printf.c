@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	{"c", printf_c}, {NULL, NULL}};
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
-		return (0);
+		return (-1);
 	va_start(ap, format);
 	while (format[i])
 	{
