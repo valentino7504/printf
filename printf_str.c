@@ -2,11 +2,13 @@
 /**
  * printf_str - prints a string
  * @ap: the variable list of arguments
+ * Return: the length of the string
  */
-void printf_str(va_list ap)
+int printf_str(va_list ap)
 {
 	char *str = va_arg(ap, char *);
 	int i = 0;
+	int length;
 
 	if (str == NULL)
 	{
@@ -15,5 +17,7 @@ void printf_str(va_list ap)
 	for (i = 0; i < _strlen(str); i++)
 	{
 		_putchar(str[i]);
+		length++;
 	}
+	return (length);
 }
