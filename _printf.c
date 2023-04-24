@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 	int i = 0, length, found = 0;
-	long unsigned int j;
+	unsigned long int j;
 	va_list ap;
 	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37},
 	{"%c", printf_c}};
