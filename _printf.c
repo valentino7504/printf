@@ -12,10 +12,10 @@ int _printf(const char *format, ...)
 	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37},
 	{"%c", printf_c}};
 
+	va_start(ap, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
-	va_start(ap, format);
-	while (format[i])
+	while (format[i] != '\0')
 	{
 		j = 0;
 		found = 0;
