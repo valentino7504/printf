@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	unsigned long int j;
 	va_list ap;
 	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37},
-	{"%c", printf_c}};
+	{"%c", printf_c}, {"%d", printf_int}, {"%i", printf_int}};
 
 	va_start(ap, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
