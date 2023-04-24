@@ -2,33 +2,35 @@
 /**
  * printf_int - prints an integer to the console
  * @ap: the variable argument list containing the integer to be printed
+ *
  * Return: the number of characters printed
  */
 int printf_int(va_list ap)
 {
-	int n = va_arg(ap, int), count = 0, digits = 0, exp = 1;
-	int copy = (n < 0) ? (-1 * n) : n;
-	int i, j;
+    int n = va_arg(ap, int), temp;
+    int count = 0;
+    int divisor = 1;
 
-	while (copy > 9)
-	{
-		copy /= 10;
-		digits += 1;
-	}
-	copy = (n < 0) ? (-1 * n) : n;
-	if (n < 0)
-	{
-		_putchar('-');
-		count += 1;
-	}
-	for (i = digits; i >= 0; i--)
-	{
-		exp = 1;
-		for (j = 0; j < i; j++)
-			exp *= 10;
-		_putchar((copy / exp) + '0');
-		copy = copy % exp;
-		count++;
-	}
-	return (count);
+    if (n < 0)
+    {
+        _putchar('-');
+        n = -n;
+        count++;
+    }
+	temp = n;
+
+    while (temp > 9)
+    {
+        divisor *= 10;
+        temp /= 10;
+    }
+
+    while (divisor >= 1)
+    {
+        _putchar((n / divisor) % 10 + '0');
+        divisor /= 10;
+        count++;
+    }
+
+    return (count);
 }
