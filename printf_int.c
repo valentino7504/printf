@@ -1,44 +1,39 @@
 #include "main.h"
 /**
- * printf_int - prints integer
- * @ap: argument to print
- * Return: number of characters printed
+ * printf_int - prints a number
+ * @ap: the arg list
+ * Return: the number of printed characters
  */
 int printf_int(va_list ap)
 {
 	int n = va_arg(ap, int);
-	int copy, final = n % 10, divisor = 1;
-	int count = 1;
-	int place;
+	int a = (n < 0) ? (-1 * n) : n;
+	int number_of_zeros = 0;
+	int i, j, count = 0;
+	int divisor = 1;
 
-	n /= 10;
-	copy = n;
+	while (a >= 10)
+	{
+		a /= 10;
+		number_of_zeros += 1;
+	}
+	a = (n < 0) ? (-1 * n) : n;
+
 	if (n < 0)
 	{
-		copy = -copy;
-		n = -n;
-		final = -final;
-		count++;
 		_putchar('-');
+		count++;
 	}
-	if (copy > 0)
+	for (i = number_of_zeros; i >= 0; i--)
 	{
-		while (copy / 10)
+		divisor = 1;
+		for (j = 0; j < i; j++)
 		{
-			divisor = divisor * 10;
-			copy /= 10;
+			divisor *= 10;
 		}
-		copy = n;
-		while (divisor > 0)
-		{
-			place = copy / divisor;
-			_putchar((copy / divisor) + '0');
-			copy -= (place * divisor);
-			divisor /= 10;
-			count++;
-		}
+		_putchar((a / divisor) + '0');
+		count++;
+		a = a % divisor;
 	}
-	_putchar(final + '0');
-
 	return (count);
 }
