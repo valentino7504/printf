@@ -1,44 +1,34 @@
 #include "main.h"
 /**
- * printf_int - prints integer
- * @ap: argument to print
- * Return: number of characters printed
+ * printf_int - prints an integer to the console
+ * @ap: the variable argument list containing the integer to be printed
+ * Return: the number of characters printed
  */
 int printf_int(va_list ap)
 {
-	int n = va_arg(ap, int);
-	int num, last = n % 10, digit, exp = 1;
-	int  i = 1;
+	int n = va_arg(ap, int), count = 0, digits = 0, exp = 1;
+	int copy = (n < 0) ? (-1 * n) : n;
+	int i, j;
 
-	n = n / 10;
-	num = n;
-
-	if (last < 0)
+	while (copy > 9)
+	{
+		copy /= 10;
+		digits += 1;
+	}
+	copy = (n < 0) ? (-1 * n) : n;
+	if (n < 0)
 	{
 		_putchar('-');
-		num = -num;
-		n = -n;
-		last = -last;
-		i++;
+		count += 1;
 	}
-	if (num > 0)
+	for (i = digits; i >= 0; i--)
 	{
-		while (num / 10 != 0)
-		{
-			exp = exp * 10;
-			num = num / 10;
-		}
-		num = n;
-		while (exp > 0)
-		{
-			digit = num / exp;
-			_putchar(digit + '0');
-			num = num - (digit * exp);
-			exp = exp / 10;
-			i++;
-		}
+		exp = 1;
+		for (j = 0; j < i; j++)
+			exp *= 10;
+		_putchar((copy / exp) + '0');
+		copy = copy % exp;
+		count++;
 	}
-	_putchar(last + '0');
-
-	return (i);
+	return (count);
 }
