@@ -6,10 +6,11 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, j, length;
+	int i = 0, length, found = 0;
+	long unsigned int j;
 	va_list ap;
-	print_t prints[] = {{"s", printf_str}, {"%", printf_37},
-	{"c", printf_c}, {NULL, NULL}};
+	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37},
+	{"%c", printf_c}};
 
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
@@ -17,27 +18,20 @@ int _printf(const char *format, ...)
 	while (format[i])
 	{
 		j = 0;
-		if (format[i] == '%')
+		found = 0;
+		while (j < (sizeof(prints) / sizeof(print_t)))
 		{
-			j = 0;
-			while (prints[j].specifier)
+			if (prints[j].specifier[0] == format[i] &&
+			prints[j].specifier[1] == format[i + 1])
 			{
-				if (*(prints[j].specifier) == format[i + 1])
-				{
-					length += prints[j].print_function(ap);
-					break;
-				}
-				j++;
+				length += prints[j].print_function(ap);
+				found = 1;
+				i += 2;
+				break;
 			}
-			if (prints[j].specifier == NULL)
-			{
-				_putchar(format[i]);
-				_putchar(format[i + 1]);
-				length += 2;
-			}
-			i += 2;
+			j++;
 		}
-		else
+		if (!found)
 		{
 			_putchar(format[i]);
 			length++;
