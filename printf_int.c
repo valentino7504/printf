@@ -20,18 +20,21 @@ int printf_int(va_list ap)
 		final *= -1;
 		count++;
 	}
-	while ((copy / 10) && copy > 0)
+	if (copy > 0)
 	{
-		divisor *= 10;
-		copy /= 10;
-	}
-	copy = n;
-	while (divisor > 0 && copy > 0)
-	{
-		_putchar((copy / divisor) + '0');
-		copy -= (copy * divisor);
-		divisor /= 10;
-		count++;
+		while ((copy / 10) && copy > 0)
+		{
+			divisor *= 10;
+			copy /= 10;
+		}
+		copy = n;
+		while (divisor > 0 && copy > 0)
+		{
+			_putchar((copy / divisor) + '0');
+			copy -= (copy * divisor);
+			divisor /= 10;
+			count++;
+		}
 	}
 	_putchar(final + '0');
 	return (count);
