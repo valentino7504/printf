@@ -4,7 +4,8 @@
 #include <stdlib.h>
 /**
  * struct prints - structure of format specifiers and functions
- *
+ * @specifier: the character type
+ * @print_function: the print function to call
  * Description - Stores specifiers and format printer functions
  */
 typedef struct prints
