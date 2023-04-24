@@ -6,42 +6,26 @@
  */
 int printf_b(va_list ap)
 {
-	unsigned int n = va_arg(ap, unsigned int);
-	int count = 0, i, flag = 0;
-	char *binary = malloc(32 * sizeof(char));
+	int flag = 0, count = 0;
+	int i, masker = 1;
+	unsigned int num = va_arg(ap, unsigned int);
+	unsigned int bit_value;
 
-	if (binary == NULL)
-	{
-		return (0);
-	}
-	if (n == 0)
+	if (num == 0)
 	{
 		_putchar('0');
-		free(binary);
 		return (1);
 	}
-	for (i = 0; i < 32; i++)
-		binary[i] = ' ';
-	i = 31;
-	while (n > 0)
+	for (i = 0; i <= 31; i++)
 	{
-		if (n % 2 == 1)
+		bit_value = (masker << (31 - i)) & num;
+		if (bit_value >> (31 - i))
 			flag = 1;
 		if (flag)
 		{
-			binary[i] = (n % 2) + '0';
-			i--;
-		}
-		n /= 2;
-	}
-	for (i = 0; i < 32; i++)
-	{
-		if (binary[i] != ' ')
-		{
-			_putchar(binary[i]);
 			count++;
+			_putchar(48 + (bit_value >> (31 - i)));
 		}
 	}
-	free(binary);
 	return (count);
 }
