@@ -18,7 +18,6 @@ int printf_str(va_list ap)
 	for (i = 0; i < length; i++)
 	{
 		_putchar(str[i]);
-		length++;
 	}
 	return (length);
 }
