@@ -8,7 +8,7 @@ int printf_str(va_list ap)
 {
 	char *str = va_arg(ap, char *);
 	int i = 0;
-	int length;
+	int length = 0;
 
 	if (str == NULL)
 	{
