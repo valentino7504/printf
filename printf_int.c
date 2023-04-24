@@ -22,13 +22,13 @@ int printf_int(va_list ap)
 	}
 	if (copy > 0)
 	{
-		while ((copy / 10) && copy > 0)
+		while (copy / 10)
 		{
 			divisor *= 10;
 			copy /= 10;
 		}
 		copy = n;
-		while (divisor > 0 && copy > 0)
+		while (divisor > 0)
 		{
 			_putchar((copy / divisor) + '0');
 			copy -= (copy * divisor);
