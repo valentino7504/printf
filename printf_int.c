@@ -9,6 +9,7 @@ int printf_int(va_list ap)
 	int n = va_arg(ap, int);
 	int copy, final = n % 10, divisor = 1;
 	int count = 1;
+	int place;
 
 	n /= 10;
 	copy = n;
@@ -30,8 +31,9 @@ int printf_int(va_list ap)
 		copy = n;
 		while (divisor > 0)
 		{
+			place = copy / divisor;
 			_putchar((copy / divisor) + '0');
-			copy -= ((copy / divisor) * divisor);
+			copy -= (place * divisor);
 			divisor /= 10;
 			count++;
 		}
