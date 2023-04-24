@@ -7,30 +7,27 @@
  */
 int printf_int(va_list ap)
 {
-    int n = va_arg(ap, int), temp;
-    int count = 0;
-    int divisor = 1;
+	int n = va_arg(ap, int), temp;
+	int count = 0;
+	int divisor = 1;
 
-    if (n < 0)
-    {
-        _putchar('-');
-        n = -n;
-        count++;
-    }
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+		count++;
+	}
 	temp = n;
-
-    while (temp > 9)
-    {
-        divisor *= 10;
-        temp /= 10;
-    }
-
-    while (divisor >= 1)
-    {
-        _putchar((n / divisor) % 10 + '0');
-        divisor /= 10;
-        count++;
-    }
-
-    return (count);
+	while (temp > 9)
+	{
+		divisor *= 10;
+		temp /= 10;
+	}
+	while (divisor >= 1)
+	{
+		_putchar((n / divisor) % 10 + '0');
+		divisor /= 10;
+		count++;
+	}
+	return (count);
 }
