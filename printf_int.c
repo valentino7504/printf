@@ -10,11 +10,6 @@ int printf_int(va_list ap)
 	int copy, final = n % 10, divisor = 1;
 	int count = 1;
 
-	if (n == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
 	n /= 10;
 	copy = n;
 	if (n < 0)
@@ -25,18 +20,21 @@ int printf_int(va_list ap)
 		count++;
 		_putchar('-');
 	}
-	while (copy / 10)
+	if (copy > 0)
 	{
-		divisor = divisor * 10;
-		copy /= 10;
-	}
-	copy = n;
-	while (divisor > 0)
-	{
-		_putchar((copy / divisor) + '0');
-		copy -= ((copy / divisor) * divisor);
-		divisor /= 10;
-		count++;
+		while (copy / 10)
+		{
+			divisor = divisor * 10;
+			copy /= 10;
+		}
+		copy = n;
+		while (divisor > 0)
+		{
+			_putchar((copy / divisor) + '0');
+			copy -= ((copy / divisor) * divisor);
+			divisor /= 10;
+			count++;
+		}
 	}
 	_putchar(final + '0');
 
