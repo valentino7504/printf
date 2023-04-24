@@ -14,7 +14,8 @@ int printf_revstr(va_list ap)
 	{
 		str = "(null)";
 	}
-	length = _strlen(str);
+	while (str[length])
+		length++;
 	for (i = (length - 1); i >= 0; i--)
 	{
 		_putchar(str[i]);
