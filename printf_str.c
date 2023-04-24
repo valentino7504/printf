@@ -14,7 +14,8 @@ int printf_str(va_list ap)
 	{
 		str = "(null)";
 	}
-	for (i = 0; i < _strlen(str); i++)
+	length = _strlen(str);
+	for (i = 0; i < length; i++)
 	{
 		_putchar(str[i]);
 		length++;
