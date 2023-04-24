@@ -18,5 +18,6 @@ int printf_c(va_list ap);
 int printf_str(va_list ap);
 int printf_37(void);
 int printf_int(va_list ap);
+int printf_b(va_list ap);
 int _printf(const char *format, ...);
 #endif
