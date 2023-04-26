@@ -1,21 +1,20 @@
 #include "main.h"
 /**
- * printf_str - prints a string
+ * printf_revstr - prints a string
  * @ap: the variable list of arguments
  * Return: the length of the string
  */
-int printf_str(va_list ap)
+int printf_revstr(va_list ap)
 {
 	char *str = va_arg(ap, char *);
-	int i = 0;
+	int i;
 	int length = 0;
 
 	if (str == NULL)
-	{
 		str = "(null)";
-	}
-	length = _strlen(str);
-	for (i = 0; i < length; i++)
+	while (str[length] != '\0')
+		length++;
+	for (i = (length - 1); i >= 0; i--)
 	{
 		_putchar(str[i]);
 	}
