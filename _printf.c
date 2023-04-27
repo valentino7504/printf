@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			prints[j].specifier[1] == format[i + 1])
 			{
 				length += prints[j].print_function(ap);
-				found = 0;
+				found = 1;
 				i += 2;
 				break;
 			}
