@@ -1,39 +1,39 @@
 #include "main.h"
+
 /**
- * printf_int - prints a number
- * @ap: the arg list
- * Return: the number of printed characters
+ * printf_int - prints integer
+ * @args: argument to print
+ * Return: number of characters printed
  */
-int printf_int(va_list ap)
+int printf_int(va_list args)
 {
-	int n = va_arg(ap, int);
-	int a = (n < 0) ? (-1 * n) : n;
-	int number_of_zeros = 0;
-	int i, j, count = 0;
-	int divisor = 1;
+	int n = va_arg(args, int);
+	int num = n, i = 0, digit;
+	int skip_leading_zeros = 0;
 
-	while (a >= 10)
+	if (n == 0)
 	{
-		a /= 10;
-		number_of_zeros += 1;
+		_putchar('0');
+		return (1);
 	}
-	a = (n < 0) ? (-1 * n) : n;
-
-	if ((a % 10) < 0)
+	if (num < 0)
 	{
 		_putchar('-');
-		count++;
+		num = -num;
+		i++;
 	}
-	for (i = number_of_zeros; i >= 0; i--)
+	while (num > 0 || !skip_leading_zeros)
 	{
-		divisor = 1;
-		for (j = 0; j < i; j++)
+		digit = num % 10;
+		num /= 10;
+
+		if (digit > 0 || skip_leading_zeros)
 		{
-			divisor *= 10;
+			_putchar(digit + '0');
+			i++;
+			skip_leading_zeros = 1;
 		}
-		_putchar((a / divisor) + '0');
-		count++;
-		a = a % divisor;
 	}
-	return (count);
+
+	return (i);
 }
