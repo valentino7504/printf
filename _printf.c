@@ -9,7 +9,8 @@ int _printf(const char *format, ...)
 	int i = 0, length, found = 0;
 	unsigned long int j;
 	va_list ap;
-	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37}, {"%r", printf_revstr},
+	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37},
+	{"%r", printf_revstr},
 	{"%c", printf_c}, {"%d", printf_int}, {"%i", printf_int}, {"%b", printf_b}};
 
 	va_start(ap, format);

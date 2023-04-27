@@ -19,7 +19,7 @@ int printf_int(va_list ap)
 	}
 	a = (n < 0) ? (-1 * n) : n;
 
-	if (n < 0)
+	if ((a % 10) < 0)
 	{
 		_putchar('-');
 		count++;
