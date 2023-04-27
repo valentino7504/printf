@@ -11,7 +11,8 @@ int _printf(const char *format, ...)
 	va_list ap;
 	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37},
 	{"%r", printf_revstr},
-	{"%c", printf_c}, {"%d", printf_int}, {"%i", printf_int}, {"%b", printf_b}};
+	{"%c", printf_c}, {"%d", printf_int}, {"%i", printf_int}, {"%b", printf_b},
+	{"%R", printf_rot}};
 
 	va_start(ap, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
