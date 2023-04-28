@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include "stdio.h"
 /**
  * printf_int - prints integer.
  * @args: argument to print
@@ -8,8 +8,8 @@
 int printf_int(va_list args)
 {
 	int n = va_arg(args, int);
-	int num = n, i = 0, digit;
-	int skip_leading_zeros = 0;
+	int num = n, count = 0;
+	int exp = 1;
 
 	if (n == 0)
 	{
@@ -20,20 +20,18 @@ int printf_int(va_list args)
 	{
 		_putchar('-');
 		num = -num;
-		i++;
+		count++;
 	}
-	while (num > 0 || !skip_leading_zeros)
+	while (num / exp > 9)
+		exp *= 10;
+	while (num > 9)
 	{
-		digit = num % 10;
-		num /= 10;
-
-		if (digit > 0 || skip_leading_zeros)
-		{
-			_putchar(digit + '0');
-			i++;
-			skip_leading_zeros = 1;
-		}
+		_putchar((num / exp) + '0');
+		num = num % exp;
+		exp /= 10;
+		count++;
 	}
-
-	return (i);
+	_putchar((num % 10) + '0');
+	count++;
+	return (count);
 }
