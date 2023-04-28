@@ -8,8 +8,8 @@
 int printf_int(va_list args)
 {
 	int n = va_arg(args, int);
-	int num = n, count = 0;
-	int exp = 1;
+	long int num = n;
+	int exp = 1, count = 0;
 
 	if (n == 0)
 	{
