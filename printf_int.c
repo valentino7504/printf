@@ -23,6 +23,18 @@ int printf_int(va_list args)
 	}
 	while (n / exp > 9)
 		exp *= 10;
+	if (n % exp == 0)
+	{
+		_putchar((n / exp) + '0');
+		count++;
+		while (exp > 1)
+		{
+			_putchar('0');
+			exp /= 10;
+			count++;
+		}
+		return (count);
+	}
 	while (n > 9)
 	{
 		_putchar((n / exp) + '0');
