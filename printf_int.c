@@ -7,8 +7,7 @@
  */
 int printf_int(va_list args)
 {
-	int n = va_arg(args, int);
-	long int num = n;
+	long int n = va_arg(args, int);
 	int exp = 1, count = 0;
 
 	if (n == 0)
@@ -16,22 +15,22 @@ int printf_int(va_list args)
 		_putchar('0');
 		return (1);
 	}
-	if (num < 0)
+	if (n < 0)
 	{
 		_putchar('-');
-		num = -num;
+		n = -n;
 		count++;
 	}
-	while (num / exp > 9)
+	while (n / exp > 9)
 		exp *= 10;
-	while (num > 9)
+	while (n > 9)
 	{
-		_putchar((num / exp) + '0');
-		num = num % exp;
+		_putchar((n / exp) + '0');
+		n = n % exp;
 		exp /= 10;
 		count++;
 	}
-	_putchar((num % 10) + '0');
+	_putchar((n % 10) + '0');
 	count++;
 	return (count);
 }
