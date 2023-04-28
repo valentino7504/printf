@@ -8,6 +8,7 @@
 void print_hex(unsigned long int n, int uppercase)
 {
 	char *hex_digits = uppercase ? "0123456789ABCDEF" : "0123456789abcdef";
+
 	if (n >= 16)
 		print_hex(n / 16, uppercase);
 	_putchar(hex_digits[n % 16]);
