@@ -22,5 +22,6 @@ int printf_int(va_list ap);
 int printf_b(va_list ap);
 int printf_revstr(va_list ap);
 int printf_rot(va_list ap);
+int printf_ptr(va_list ap);
 int _printf(const char *format, ...);
 #endif

@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	print_t prints[] = {{"%s", printf_str}, {"%%", printf_37},
 	{"%r", printf_revstr},
 	{"%c", printf_c}, {"%d", printf_int}, {"%i", printf_int}, {"%b", printf_b},
-	{"%R", printf_rot}};
+	{"%R", printf_rot}, {"%p", printf_ptr}};
 
 	va_start(ap, format);
 	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
